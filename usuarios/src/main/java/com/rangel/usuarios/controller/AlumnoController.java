@@ -21,7 +21,7 @@ public class AlumnoController{
         return ResponseEntity.ok().body(service.findAll());
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public ResponseEntity<?> ver(@PathVariable Long id){
         Optional<Alumno> ob = service.findById(id);
 
