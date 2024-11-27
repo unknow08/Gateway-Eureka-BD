@@ -1,8 +1,10 @@
 package com.rangel.curso.models.entity;
 
+import com.rangel.common.CommonUsuario.models.entity.Alumno;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="cursos")
@@ -19,6 +21,9 @@ public class Curso {
     private void prePersist(){
         this.createAt = new Date();
     }
+
+    @OneToMany
+    private List<Alumno> listaAlumno;
 
     public Curso(Long id, String nombre, Date createAt) {
         Id = id;
@@ -52,6 +57,14 @@ public class Curso {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public List<Alumno> getListaAlumno() {
+        return listaAlumno;
+    }
+
+    public void setListaAlumno(List<Alumno> listaAlumno) {
+        this.listaAlumno = listaAlumno;
     }
 
     @Override

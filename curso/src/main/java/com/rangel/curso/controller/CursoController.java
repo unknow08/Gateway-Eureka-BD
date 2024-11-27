@@ -15,8 +15,6 @@ import java.util.Optional;
 @RestController
 public class CursoController extends CommonController<Curso, CursoService> {
 
-    // Ahora si compila
-
     @PutMapping("/{id}")
     public ResponseEntity<?> editar (@RequestBody Curso curso, @PathVariable Long id){
         Optional<Curso> ob = service.findById(id);
