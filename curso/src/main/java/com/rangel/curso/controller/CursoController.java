@@ -15,8 +15,6 @@ import java.util.Optional;
 @RestController
 public class CursoController extends CommonController<Curso, CursoService> {
 
-    // Da error al desplegar, dice que no puede satisfacer la dependencia expresada como service
-
     @PutMapping("/{id}")
     public ResponseEntity<?> editar (@RequestBody Curso curso, @PathVariable Long id){
         Optional<Curso> ob = service.findById(id);
