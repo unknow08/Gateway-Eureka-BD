@@ -76,6 +76,19 @@ public class Alumno {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (!(obj instanceof Alumno)){
+            return false;
+        }
+
+        Alumno a = (Alumno) obj;
+        return this.Id != null && this.Id.equals(a.getId());
+    }
+
+    @Override
     public String toString() {
         return "Alumno{" +
                 "Id=" + Id +

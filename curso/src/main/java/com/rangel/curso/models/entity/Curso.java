@@ -72,6 +72,10 @@ public class Curso {
     public void setAlumnos(Alumno alumno){
         this.listaAlumno.add(alumno);
     }
+    
+    public void removeAlumnos(Alumno alumno){
+        this.listaAlumno.remove(alumno);
+    }
 
     @Override
     public String toString() {
