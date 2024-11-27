@@ -1,15 +1,13 @@
 package com.rangel.commons.service;
 
-import com.rangel.usuarios.entity.Alumno;
-
 import java.util.Optional;
 
-public interface AlumnoService {
-    public Iterable<Alumno> findAll();
+public interface AlumnoService<E> {
+    public Iterable<E> findAll();
 
-    public Optional<Alumno> findById(Long id);
+    public Optional<E> findById(Long id);
 
-    public Alumno save(Alumno alumno);
+    public E save(E entity);
 
     public void deletedById (Long id);
 }

@@ -1,34 +1,33 @@
 package com.rangel.commons.service;
 
-import com.rangel.usuarios.entity.Alumno;
-import com.rangel.usuarios.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
-public class AlumnoServiceImpl implements AlumnoService{
+public class AlumnoServiceImpl<E, R extends CrudRepository<E,Long>> implements AlumnoService{
     @Autowired
-    AlumnoRepository dao;
+    R dao;
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Alumno> findAll() {
+    public Iterable<E> findAll() {
         return dao.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Alumno> findById(Long id) {
+    public Optional<E> findById(Long id) {
         return dao.findById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Alumno save(Alumno alumno) {
-        return dao.save(alumno);
+    public E save(E entity) {
+        return dao.save(entity);
     }
 
     @Override
