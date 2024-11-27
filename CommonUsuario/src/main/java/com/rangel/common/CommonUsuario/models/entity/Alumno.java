@@ -1,4 +1,4 @@
-package com.rangel.usuarios.entity;
+package com.rangel.common.CommonUsuario.models.entity;
 
 import jakarta.persistence.*;
 
@@ -31,7 +31,7 @@ public class Alumno {
         this.createdAt = createdAt;
     }
 
-    public  Alumno(){
+    public Alumno(){
         // Constructor vacio
     }
 
