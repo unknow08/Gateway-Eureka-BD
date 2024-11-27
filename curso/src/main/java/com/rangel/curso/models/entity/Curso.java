@@ -3,6 +3,7 @@ package com.rangel.curso.models.entity;
 import com.rangel.common.CommonUsuario.models.entity.Alumno;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class Curso {
         Id = id;
         this.nombre = nombre;
         this.createAt = createAt;
+        this.listaAlumno = new ArrayList<>();
     }
 
     public Curso(){
