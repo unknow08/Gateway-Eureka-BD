@@ -67,6 +67,10 @@ public class Curso {
         this.listaAlumno = listaAlumno;
     }
 
+    public void setAlumnos(Alumno alumno){
+        this.listaAlumno.add(alumno);
+    }
+
     @Override
     public String toString() {
         return "Curso{" +
