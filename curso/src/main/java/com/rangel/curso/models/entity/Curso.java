@@ -22,7 +22,7 @@ public class Curso {
         this.createAt = new Date();
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Alumno> listaAlumno;
 
     public Curso(Long id, String nombre, Date createAt) {
