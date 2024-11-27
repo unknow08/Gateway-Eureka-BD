@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class AlumnoServiceImpl<E, R extends CrudRepository<E,Long>> implements AlumnoService{
+public class CommonServiceImpl<E, R extends CrudRepository<E,Long>> implements CommonService {
     @Autowired
     R dao;
 

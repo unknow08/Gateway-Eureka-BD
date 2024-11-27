@@ -2,7 +2,7 @@ package com.rangel.commons.service;
 
 import java.util.Optional;
 
-public interface AlumnoService<E> {
+public interface CommonService<E> {
     public Iterable<E> findAll();
 
     public Optional<E> findById(Long id);
