@@ -1,8 +1,8 @@
 package com.rangel.usuarios.controller;
 
+import com.rangel.commons.controller.CommonController;
 import com.rangel.usuarios.entity.Alumno;
-import com.rangel.usuarios.service.AlumnoServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rangel.usuarios.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-public class AlumnoController{
-    @Autowired
-    AlumnoServiceImpl service;
+public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
     @Value("${config.balanceador.test}")
     private String balanceadorTest;
@@ -27,28 +25,6 @@ public class AlumnoController{
         response.put("alumno", service.findAll());
 
         return ResponseEntity.ok().body(response);
-    }
-
-    @GetMapping
-    public ResponseEntity<?> listarAlumno(){
-        return ResponseEntity.ok().body(service.findAll());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> ver(@PathVariable Long id){
-        Optional<Alumno> ob = service.findById(id);
-
-        if (ob.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok().body(ob.get());
-    }
-
-    @PostMapping
-    public ResponseEntity<?> crear (@RequestBody Alumno alumno){
-        Alumno alumnoDb = service.save(alumno);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(alumnoDb);
     }
 
     @PutMapping("/{id}")
@@ -65,11 +41,5 @@ public class AlumnoController{
         alumnoDb.setEmail(alumno.getEmail());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(alumnoDb));
-    }
-
-    @DeleteMapping("/{id}")
-    private ResponseEntity<?> eliminar (@PathVariable Long id){
-        service.deletedById(id);
-        return ResponseEntity.noContent().build();
     }
 }
