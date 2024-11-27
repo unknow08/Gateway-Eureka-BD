@@ -18,19 +18,19 @@ public class CommonServiceImpl<E, R extends CrudRepository<E,Long>> implements C
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Optional<E> findById(Long id) {
         return dao.findById(id);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public E save(E entity) {
         return dao.save(entity);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public void deletedById(Long id) {
         dao.deleteById(id);
     }

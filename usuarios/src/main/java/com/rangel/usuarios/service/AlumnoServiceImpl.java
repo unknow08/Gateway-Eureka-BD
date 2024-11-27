@@ -26,13 +26,13 @@ public class AlumnoServiceImpl implements AlumnoService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Alumno save(Alumno alumno) {
         return dao.save(alumno);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public void deletedById(Long id) {
         dao.deleteById(id);
     }
