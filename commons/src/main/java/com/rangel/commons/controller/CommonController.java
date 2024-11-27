@@ -1,7 +1,7 @@
 package com.rangel.commons.controller;
 
-import com.rangel.usuarios.entity.Alumno;
-import com.rangel.usuarios.service.AlumnoServiceImpl;
+
+import com.rangel.commons.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -12,13 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
-public class CommonController {
+
+public class CommonController <E, S extends CommonService<E>> {
     @Autowired
-    AlumnoServiceImpl service;
+    protected S service;
 
     @Value("${config.balanceador.test}")
-    private String balanceadorTest;
+    protected String balanceadorTest;
 
     @GetMapping("/balanceador-test")
     public ResponseEntity<?> balanceadorTest(){
@@ -30,13 +30,13 @@ public class CommonController {
     }
 
     @GetMapping
-    public ResponseEntity<?> listarAlumno(){
+    public ResponseEntity<?> listarEntity(){
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> ver(@PathVariable Long id){
-        Optional<Alumno> ob = service.findById(id);
+        Optional<E> ob = service.findById(id);
 
         if (ob.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -45,26 +45,10 @@ public class CommonController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crear (@RequestBody Alumno alumno){
-        Alumno alumnoDb = service.save(alumno);
+    public ResponseEntity<?> crear (@RequestBody E entity){
+        E entityDb = service.save(entity);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(alumnoDb);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> editar (@RequestBody Alumno alumno, @PathVariable Long id){
-        Optional<Alumno> ob = service.findById(id);
-
-        if (ob.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-
-        Alumno alumnoDb = ob.get();
-        alumnoDb.setNombre(alumno.getNombre());
-        alumnoDb.setApellido(alumno.getApellido());
-        alumnoDb.setEmail(alumno.getEmail());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(alumnoDb));
+        return ResponseEntity.status(HttpStatus.CREATED).body(entityDb);
     }
 
     @DeleteMapping("/{id}")
