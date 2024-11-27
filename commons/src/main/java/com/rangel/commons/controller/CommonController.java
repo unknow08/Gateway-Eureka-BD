@@ -29,7 +29,7 @@ public class CommonController <E, S extends CommonService<E>> {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<?> listarEntity(){
         return ResponseEntity.ok().body(service.findAll());
     }
