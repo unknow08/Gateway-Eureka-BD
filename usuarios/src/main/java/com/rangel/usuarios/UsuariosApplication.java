@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan({"com.rangel.common.CommonUsuario.models.entity", "com.rangel"})
-@EntityScan({"com.rangel.common.CommonUsuario.models.entity", "com.rangel"})
+@ComponentScan({"com.rangel.common.CommonUsuario", "com.rangel"})
+@EntityScan({"com.rangel.common.CommonUsuario", "com.rangel"})
 public class UsuariosApplication {
 
 	public static void main(String[] args) {
