@@ -1,7 +1,7 @@
 package com.rangel.usuarios.controller;
 
+import com.rangel.common.CommonUsuario.models.entity.Alumno;
 import com.rangel.commons.controller.CommonController;
-import com.rangel.usuarios.entity.Alumno;
 import com.rangel.usuarios.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

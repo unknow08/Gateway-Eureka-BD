@@ -1,7 +1,7 @@
 package com.rangel.usuarios.service;
 
+import com.rangel.common.CommonUsuario.models.entity.Alumno;
 import com.rangel.commons.service.CommonService;
-import com.rangel.usuarios.entity.Alumno;
 
 public interface AlumnoService extends CommonService<Alumno> {
 

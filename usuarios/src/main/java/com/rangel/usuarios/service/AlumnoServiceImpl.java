@@ -1,6 +1,7 @@
 package com.rangel.usuarios.service;
 
-import com.rangel.usuarios.entity.Alumno;
+
+import com.rangel.common.CommonUsuario.models.entity.Alumno;
 import com.rangel.usuarios.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
